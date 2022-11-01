@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Navbar from "./Navbar";
 import { useDispatch, useSelector } from "react-redux";
 import CartSlice, { addToCart } from "../stories/CartSlice";
-
+import {AiOutlineHeart}  from "react-icons/ai"
 const Home = () => {
   const { arr } = useSelector((state) => state.cart);
   const dispatch = useDispatch();
@@ -20,6 +20,9 @@ const Home = () => {
             {arr.map((item, index) => {
               return (
                 <div className="card" key={index}>
+                  <div className="like-icon">
+                    <AiOutlineHeart />
+                  </div>
                   <img className="card-img" src={item.image} alt="" />
                   <div className="card-block">
                     <h4 className="card-title"> {item.title} </h4>

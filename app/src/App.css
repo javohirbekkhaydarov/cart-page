@@ -38,14 +38,34 @@ ul li a {
   justify-content: space-between;
 }
 .card {
-  width: 33%;
+  margin: 2rem auto;
+  width: 30%;
+  padding: 1rem auto;
+  height: 100%;
 }
 .card-img {
-  width: 100%;
+  text-align: center;
+  margin: 0 auto;
+  width: 70%;
 }
 .line-img {
   width: 50px;
 }
+.like-icon {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  font-size: 20px;
+  color: #ec4e4e;
+  cursor: pointer;
+  transition: all 0.1s ease-in;
+}
+.like-icon:hover {
+  font-size: 25px;
+  top: 0px;
+  right: 8px;
+}
+
 .center {
   display: flex;
   margin: 1rem auto;
