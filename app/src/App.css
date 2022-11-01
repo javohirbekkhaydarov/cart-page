@@ -6,6 +6,7 @@ nav {
   justify-content: space-between;
   padding: 5px 10px;
   font-size: 25px;
+  background: rgba(0, 0, 0, 0.1);
 }
 ul {
   display: flex;
@@ -17,13 +18,34 @@ li {
 ul li a {
   margin: 0px 10px;
 }
-
-
+.totalprice {
+  background: #ec4e4e;
+  color: #fff;
+  padding: 2px;
+  font-size: 12px;
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+  border-bottom-left-radius: 25px;
+}
 .line {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  border: 0.4px solid #dedede;
 }
-
+.col {
+  display: flex;
+  justify-content: space-between;
+}
+.card {
+  width: 33%;
+}
+.card-img {
+  width: 100%;
+}
+.line-img {
+  width: 50px;
+}
 .center {
   display: flex;
   margin: 1rem auto;

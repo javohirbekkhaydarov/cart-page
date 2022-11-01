@@ -6,12 +6,11 @@ import { Routes, Route } from "react-router-dom";
 const Main = () => {
   return (
     <>
+      <Navbar />
       <Routes>
         <Route path="" element={<Home />} />
-        <Route path="/navbar" element={<Navbar />} />
         <Route path="/cart" element={<Cart />} />
       </Routes>{" "}
-    
     </>
   );
 };

@@ -1,34 +1,66 @@
 import React from "react";
 import Navbar from "./Navbar";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { minusCount, plusCount, remove } from "../stories/CartSlice";
+import { FiTrash } from "react-icons/fi";
+import "../App.css";
 const Cart = () => {
+  const { cart, total } = useSelector((state) => state.cart);
+  console.log(cart);
+  const dispatch = useDispatch();
+  const plusCountHandler = (id) => {
+    dispatch(plusCount(id));
+  };
+
+  const minusCountHandler = (id) => {
+    dispatch(minusCount(id));
+  };
+  const removeHandler = (id) => {
+    dispatch(remove(id));
+  };
+
   return (
     <div>
-      <Navbar />
-
-      <h1> this is pag Cart Page</h1>
+      <h1 className="centered"> your card </h1>
       <div className="container">
-        <div className="line ">
-          <p className="number"> N 1</p>
-          <img
-              
-              src="http://www.azspagirls.com/files/2010/09/orange.jpg"
-              alt=""
-            />
+        {cart.map((item, index) => (
+          <div className="line " key={index}>
+            <p className="number"> {item.id} </p>
+            <img className="line-img" src={item.image} alt="" />
+            <p className="remove">{item.title}</p>
             <div className="count">
-                - 1 +
+              <button
+                disabled={item.count < 2}
+                className="btn btn-success"
+                onClick={() => minusCountHandler(item.id)}
+              >
+                -
+              </button>
+              {item.count}
+              <button
+                className="btn btn-success"
+                onClick={() => plusCountHandler(item.id)}
+              >
+                +
+              </button>
             </div>
-            <div className="total">
-              $100
+            <div className="total">${item.price}</div>
+            <div
+              className="remove btn btn-danger"
+              onClick={() => removeHandler(item.id)}
+            >
+              <FiTrash />
             </div>
-            <div className="remove">
-              remove
-            </div>
-        </div>
+          </div>
+        ))}
       </div>
       <Link to="/" className="btn btn-warning">
         go to home
       </Link>
+      <div className="card">
+        <h1> totoal price : {total} $ </h1>
+      </div>
     </div>
   );
 };

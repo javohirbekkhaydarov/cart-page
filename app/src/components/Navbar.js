@@ -1,12 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { AiOutlineShoppingCart } from "react-icons/ai";
-import "../App.css"
+import "../App.css";
+import { useDispatch, useSelector } from "react-redux";
+
 const Navbar = () => {
+  const { cart } = useSelector((state) => state.cart);
   return (
     <>
       <nav>
-        <div className="logo">Logo</div>
+        <Link to="/" className="logo">Logo</Link>
         <ul>
           <li>
             {" "}
@@ -14,7 +17,8 @@ const Navbar = () => {
           </li>
           <li>
             {" "}
-            <AiOutlineShoppingCart />{" "}
+            <AiOutlineShoppingCart />
+            <span className="totalprice"> {cart.length} </span>
           </li>
         </ul>
       </nav>
