@@ -58,8 +58,8 @@ const Cart = () => {
       <Link to="/" className="btn btn-warning">
         go to home
       </Link>
-      <div className="card">
-        <h1> totoal price : {total} $ </h1>
+      <div>
+        <h2> totoal price : {total} $ </h2>
       </div>
     </div>
   );

@@ -1,12 +1,13 @@
 .App {
   text-align: center;
 }
-nav {
+.nav {
   display: flex;
   justify-content: space-between;
   padding: 5px 10px;
   font-size: 25px;
   background: rgba(0, 0, 0, 0.1);
+  z-index: 222;
 }
 ul {
   display: flex;
@@ -32,14 +33,22 @@ ul li a {
   justify-content: space-between;
   align-items: center;
   border: 0.4px solid #dedede;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #282c34;
+}
+.home{
+  display: flex;
+ justify-content: start;
 }
 .col {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
 }
 .card {
-  margin: 2rem auto;
-  width: 30%;
+  margin: 2rem ;
+  width: 100%;
   padding: 1rem auto;
   height: 100%;
 }
@@ -66,18 +75,7 @@ ul li a {
   right: 8px;
 }
 
-.center {
-  display: flex;
-  margin: 1rem auto;
-  justify-content: center;
-  margin-bottom: 10px;
-  flex-direction: column;
-  text-align: center;
-  align-items: center;
-  margin: 2rem auto;
-  width: 100%;
-  text-align: center;
-}
+
 .info-card {
   display: flex;
   justify-content: space-between;
@@ -129,6 +127,27 @@ ul li a {
 .icons {
   margin-right: 0px;
   display: end;
+}
+
+/* sidebar style*/
+.sidebar-left {
+  display: flex;
+  justify-content: center;
+  height: 90vh;
+  width: 40%;
+  color: #282c34;
+  position: absolute;
+  top: 60px;
+  right: 0;
+  background: #f7cfcf;
+  z-index: 1;
+  transform: translateX(100%);
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+.active-icon {
+  transform: translate(0%);
+  opacity: 1;
 }
 
 .removeClass {

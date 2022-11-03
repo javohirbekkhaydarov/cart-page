@@ -77,7 +77,8 @@ export const CartSlice = createSlice({
         return item.id !== action.payload;
       });
     },
-    
+
+    sidebar: (state, action) => {},
   },
 });
 

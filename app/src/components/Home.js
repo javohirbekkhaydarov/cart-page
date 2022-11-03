@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "./Navbar";
 import { useDispatch, useSelector } from "react-redux";
 import CartSlice, { addToCart } from "../stories/CartSlice";
-import {AiOutlineHeart}  from "react-icons/ai"
-const Home = () => {
+import { AiOutlineHeart } from "react-icons/ai";
+import "../App.css";
+
+const Home = ({like , setLike}) => {
   const { arr } = useSelector((state) => state.cart);
   const dispatch = useDispatch();
   const addToCartHandler = (object) => {
@@ -12,15 +14,20 @@ const Home = () => {
     dispatch(addToCart(object));
   };
 
+
+
   return (
     <>
-      <div className="container">
+      <div className="home">
         <div className="row">
           <div className="col">
             {arr.map((item, index) => {
               return (
                 <div className="card" key={index}>
-                  <div className="like-icon">
+                  <div
+                    onClick={() => setLike(!like)}
+                    className={`like-icon `}
+                  >
                     <AiOutlineHeart />
                   </div>
                   <img className="card-img" src={item.image} alt="" />

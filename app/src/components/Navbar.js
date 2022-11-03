@@ -8,12 +8,14 @@ const Navbar = () => {
   const { cart } = useSelector((state) => state.cart);
   return (
     <>
-      <nav>
-        <Link to="/" className="logo">Logo</Link>
+      <nav className="nav">
+        <Link to="/" className="logo">
+          Logo
+        </Link>
         <ul>
           <li>
             {" "}
-            <Link to="/cart"> Cart </Link>{" "}
+            {/* <Link to="/cart"> Cart </Link>{" "} */}
           </li>
           <li>
             {" "}
