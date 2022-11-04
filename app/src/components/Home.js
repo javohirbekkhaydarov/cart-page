@@ -14,8 +14,8 @@ const Home = () => {
     dispatch(addToCart(object));
   };
 
-  const likeCartHandler = (o) => {
-    dispatch(likeCart(o));
+  const likeCartHandler = (object) => {
+    dispatch(likeCart(object));
   };
   return (
     <>
@@ -26,7 +26,7 @@ const Home = () => {
               return (
                 <div className="card" key={index}>
                   <div
-                    className={`like-icon `}
+                    className={`like-icon`}
                     onClick={() => likeCartHandler(item)}
                   >
                     <AiOutlineHeart />

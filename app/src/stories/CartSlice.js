@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { Action } from "@remix-run/router";
 
 const initialState = {
   arr: [
@@ -75,7 +76,6 @@ export const CartSlice = createSlice({
         }
       }
     },
-
     minusCount: (state, action) => {
       for (let i = 0; i < state.cart.length; i++) {
         if (state.cart[i].id === action.payload) {
@@ -90,14 +90,25 @@ export const CartSlice = createSlice({
       });
     },
 
-    showSideBar: (state, action) => {
-      state.seelikes = !state.seelikes
-
+    showSideBar: (state) => {
+      state.seelikes = !state.seelikes;
+    },
+    removeLikeCartFunc: (state, action) => {
+      state.like = state.like.filter((item) => {
+        return item.id !== action.payload;
+      });
     },
   },
 });
 
-export const { addToCart, plusCount, minusCount, remove, likeCart, showSideBar } =
-  CartSlice.actions;
+export const {
+  addToCart,
+  plusCount,
+  minusCount,
+  remove,
+  likeCart,
+  showSideBar,
+  removeLikeCartFunc,
+} = CartSlice.actions;
 
 export default CartSlice.reducer;

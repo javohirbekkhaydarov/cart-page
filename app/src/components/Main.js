@@ -7,14 +7,14 @@ import Sidebar from "./Sidebar";
 const Main = () => {
   const [like, setLike] = useState(false);
   return (
-    <>
+    <div className="main">
       <Navbar />
       <Routes>
         <Route path="" element={<Home like={like} setLike={setLike} />} />
         <Route path="/cart" element={<Cart />} />
       </Routes>{" "}
       <Sidebar like={like} setLike={setLike} />
-    </>
+    </div>
   );
 };
 

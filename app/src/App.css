@@ -1,6 +1,12 @@
 .App {
   text-align: center;
 }
+.main {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
 .nav {
   display: flex;
   justify-content: space-between;
@@ -37,13 +43,14 @@ ul li a {
   justify-content: space-between;
   align-items: center;
   border: 0.4px solid #dedede;
-  width: 100%;
-  margin: 0;
+  width: 90%;
+  margin: 20px auto;
   padding: 0;
 }
 .home {
   display: flex;
   justify-content: start;
+  overflow-x: hidden;
 }
 .col {
   display: flex;
@@ -85,6 +92,7 @@ ul li a {
   width: 100%;
   margin: 0 auto;
   align-items: center;
+  overflow: hidden;
 }
 
 .info-list {
@@ -134,15 +142,12 @@ ul li a {
 
 /* sidebar style*/
 .sidebar-left {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
   height: 90vh;
   width: 40%;
   color: #282c34;
   position: absolute;
-  top: 60px;
-  right: 0;
+  top: 64px;
+  right: 0px;
   background: #f7cfcf;
   z-index: 1;
   transform: translateX(100%);
@@ -182,8 +187,8 @@ ul li a {
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.favourites {
+  margin: 0;
 }
 
 .card-img-top {
