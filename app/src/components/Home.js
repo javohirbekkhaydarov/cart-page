@@ -2,20 +2,28 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "./Navbar";
 import { useDispatch, useSelector } from "react-redux";
-import CartSlice, { addToCart, likeCart } from "../stories/CartSlice";
+import CartSlice, {
+  addToCart,
+  likeCart,
+  likeIconToggle,
+} from "../stories/CartSlice";
 import { AiOutlineHeart } from "react-icons/ai";
 import "../App.css";
 
 const Home = () => {
   const { arr } = useSelector((state) => state.cart);
   const dispatch = useDispatch();
+
   const addToCartHandler = (object) => {
-    console.log(object);
     dispatch(addToCart(object));
   };
 
   const likeCartHandler = (object) => {
     dispatch(likeCart(object));
+  };
+
+  const likeActiveHandler = (id) => {
+    dispatch(likeIconToggle(id));
   };
   return (
     <>
@@ -26,11 +34,20 @@ const Home = () => {
               return (
                 <div className="card" key={index}>
                   <div
-                    className={`like-icon`}
+                    className={`like-icon `}
                     onClick={() => likeCartHandler(item)}
                   >
-                    <AiOutlineHeart />
+                    <AiOutlineHeart
+                      onClick={() => likeActiveHandler(item.id)}
+                      className={` ${
+                        item.likeactiveicon
+                          ? "active-like-icon"
+                          : ``
+                        }`}
+                    
+                    />
                   </div>
+                   
                   <img className="card-img" src={item.image} alt="" />
                   <div className="card-block">
                     <h4 className="card-title"> {item.title} </h4>

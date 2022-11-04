@@ -14,7 +14,7 @@ const Navbar = () => {
     dispatch(showSideBar())
   };
 
-  console.log(seelikes);
+ 
   return (
     <>
       <nav className="nav">
@@ -27,7 +27,7 @@ const Navbar = () => {
             <Link to="/cart"> Cart </Link>{" "}
           </li>
           <li>
-            <div className="cart-icons" onClick={() => likeHandler()}>
+            <div className="cart-icons" onClick={() => likeHandler()  }>
               <AiOutlineHeart />
               <span className="totalprice"> {like.length} </span>
             </div>

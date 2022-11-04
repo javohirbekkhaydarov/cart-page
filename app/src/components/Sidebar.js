@@ -17,23 +17,25 @@ const Sidebar = () => {
     <div className={`sidebar-left ${seelikes ? "sidebar-left-show" : ""}`}>
       <h1 className="centered"> favourites products </h1>
 
-      {like.map((item, index) => (
-        <div className="favourites" key={index}>
-          <div className="line">
-            <img className="line-img" src={item.image} alt="" />
-            <p className="remove">{item.title}</p>
-            <div className="total">${item.price}</div>
-            <div
-              className="remove btn btn-danger"
-              onClick={() => removeHandler(item.id)}
-            >
-              <FiTrash />
+      {like.map((item, index) =>
+          (
+            <div className="favourites" key={index}>
+              <div className="line">
+                <img className="line-img" src={item.image} alt="" />
+                <p className="remove">{item.title}</p>
+                <div className="total">${item.price}</div>
+                <div
+                  className="remove btn btn-danger"
+                  onClick={() => removeHandler(item.id)}
+                >
+                  <FiTrash />
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-      ))}
+      )
+      )}
 
-      <p> totoal price : {total} $ </p>
+     
     </div>
   );
 };

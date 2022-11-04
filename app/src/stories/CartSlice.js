@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { Action } from "@remix-run/router";
+import { action } from "@remix-run/router";
 
 const initialState = {
   arr: [
@@ -9,6 +9,7 @@ const initialState = {
       title: "Orange",
       price: 5,
       count: 1,
+      likeactiveicon: false,
     },
     {
       id: 1,
@@ -16,6 +17,7 @@ const initialState = {
       title: "Peach",
       price: 10,
       count: 1,
+      likeactiveicon: false,
     },
     {
       id: 2,
@@ -23,6 +25,7 @@ const initialState = {
       title: "Apricot",
       price: 10,
       count: 1,
+      likeactiveicon: false,
     },
   ],
 
@@ -56,12 +59,15 @@ export const CartSlice = createSlice({
       const heart = state.like.find((item) => {
         return item.id === action.payload.id;
       });
+      state.like = state.like.filter((item) => {
+        return item.id !== action.payload;
+      });
 
       if (!heart) {
         state.like.push(action.payload);
       } else {
         for (let i = 0; i < state.like.length; i++) {
-          if (state.like[i].id === action.payload.id) {
+          if (state.like[i].id === !action.payload.id) {
             state.like[i].count++;
           }
         }
@@ -98,6 +104,18 @@ export const CartSlice = createSlice({
         return item.id !== action.payload;
       });
     },
+    likeIconToggle: (state, action) => {
+      state.arr.forEach((item) => {
+        if (item.id === action.payload) {
+          item.likeactiveicon = item.likeactiveicon = true;
+          console.log(item.likeactiveicon, "true value");
+        }
+       else if (item.id === action.payload) {
+          item.likeactiveicon = item.likeactiveicon = false;
+          console.log(item.likeactiveicon, "false value");
+        }
+      });
+    },
   },
 });
 
@@ -109,6 +127,7 @@ export const {
   likeCart,
   showSideBar,
   removeLikeCartFunc,
+  likeIconToggle,
 } = CartSlice.actions;
 
 export default CartSlice.reducer;
