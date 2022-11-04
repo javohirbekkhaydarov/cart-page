@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "./Navbar";
 import { useDispatch, useSelector } from "react-redux";
-import CartSlice, { addToCart } from "../stories/CartSlice";
+import CartSlice, { addToCart, likeCart } from "../stories/CartSlice";
 import { AiOutlineHeart } from "react-icons/ai";
 import "../App.css";
 
-const Home = ({like , setLike}) => {
+const Home = () => {
   const { arr } = useSelector((state) => state.cart);
   const dispatch = useDispatch();
   const addToCartHandler = (object) => {
@@ -14,8 +14,9 @@ const Home = ({like , setLike}) => {
     dispatch(addToCart(object));
   };
 
-
-
+  const likeCartHandler = (o) => {
+    dispatch(likeCart(o));
+  };
   return (
     <>
       <div className="home">
@@ -25,8 +26,8 @@ const Home = ({like , setLike}) => {
               return (
                 <div className="card" key={index}>
                   <div
-                    onClick={() => setLike(!like)}
                     className={`like-icon `}
+                    onClick={() => likeCartHandler(item)}
                   >
                     <AiOutlineHeart />
                   </div>

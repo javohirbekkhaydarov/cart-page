@@ -24,8 +24,11 @@ const initialState = {
       count: 1,
     },
   ],
+
   cart: [],
+  like: [],
   total: 0,
+  seelikes: false,
 };
 
 export const CartSlice = createSlice({
@@ -47,10 +50,19 @@ export const CartSlice = createSlice({
           }
         }
       }
+    },
+    likeCart: (state, action) => {
+      const heart = state.like.find((item) => {
+        return item.id === action.payload.id;
+      });
 
-      for (let i = 0; i < state.cart.length; i++) {
-        if (state.cart[i].id === action.payload.id) {
-          state.total += state.cart[i].price;
+      if (!heart) {
+        state.like.push(action.payload);
+      } else {
+        for (let i = 0; i < state.like.length; i++) {
+          if (state.like[i].id === action.payload.id) {
+            state.like[i].count++;
+          }
         }
       }
     },
@@ -78,10 +90,14 @@ export const CartSlice = createSlice({
       });
     },
 
-    sidebar: (state, action) => {},
+    showSideBar: (state, action) => {
+      state.seelikes = !state.seelikes
+
+    },
   },
 });
 
-export const { addToCart, plusCount, minusCount, remove } = CartSlice.actions;
+export const { addToCart, plusCount, minusCount, remove, likeCart, showSideBar } =
+  CartSlice.actions;
 
 export default CartSlice.reducer;

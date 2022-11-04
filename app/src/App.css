@@ -19,11 +19,15 @@ li {
 ul li a {
   margin: 0px 10px;
 }
+.cart-icons {
+  cursor: pointer;
+  display: inline;
+}
 .totalprice {
   background: #ec4e4e;
   color: #fff;
   padding: 2px;
-  font-size: 12px;
+  font-size: 10px;
   border-top-left-radius: 25px;
   border-top-right-radius: 25px;
   border-bottom-left-radius: 25px;
@@ -36,18 +40,18 @@ ul li a {
   width: 100%;
   margin: 0;
   padding: 0;
-  background-color: #282c34;
 }
-.home{
+.home {
   display: flex;
- justify-content: start;
+  justify-content: start;
 }
 .col {
   display: flex;
+  width: 100%;
   justify-content: center;
 }
 .card {
-  margin: 2rem ;
+  margin: 2rem;
   width: 100%;
   padding: 1rem auto;
   height: 100%;
@@ -75,11 +79,10 @@ ul li a {
   right: 8px;
 }
 
-
 .info-card {
   display: flex;
   justify-content: space-between;
-  width: 400px;
+  width: 100%;
   margin: 0 auto;
   align-items: center;
 }
@@ -89,7 +92,7 @@ ul li a {
   justify-content: space-around;
   align-items: center;
 
-  width: 440px;
+  width: 100%;
   margin-bottom: 10px;
 
   border: 0.5px solid #dedede;
@@ -133,6 +136,7 @@ ul li a {
 .sidebar-left {
   display: flex;
   justify-content: center;
+  flex-direction: column;
   height: 90vh;
   width: 40%;
   color: #282c34;
@@ -145,7 +149,7 @@ ul li a {
   opacity: 0;
   transition: all 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
 }
-.active-icon {
+.sidebar-left-show {
   transform: translate(0%);
   opacity: 1;
 }

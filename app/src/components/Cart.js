@@ -21,9 +21,9 @@ const Cart = () => {
   };
 
   return (
-    <div>
+    <div className="container">
       <h1 className="centered"> your card </h1>
-      <div className="container">
+      <div>
         {cart.map((item, index) => (
           <div className="line " key={index}>
             <p className="number"> {item.id} </p>
