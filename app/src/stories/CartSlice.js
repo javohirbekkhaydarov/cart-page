@@ -56,22 +56,39 @@ export const CartSlice = createSlice({
       }
     },
     likeCart: (state, action) => {
-      const heart = state.like.find((item) => {
-        return item.id === action.payload.id;
-      });
-      state.like = state.like.filter((item) => {
-        return item.id !== action.payload;
-      });
-
-      if (!heart) {
-        state.like.push(action.payload);
-      } else {
-        for (let i = 0; i < state.like.length; i++) {
-          if (state.like[i].id === !action.payload.id) {
-            state.like[i].count++;
-          }
+      let isFound = false;
+      let currentIndex = -1;
+      for (let i = 0; i < state.like.length; i++) {
+        if (state.like[i].id === action.payload.id) {
+          isFound = true;
+          currentIndex = i;
+          break;
         }
       }
+
+      if (isFound) {
+        state.like.splice(currentIndex, 1);
+      } else {
+        state.like.push(action.payload);
+      }
+
+      // const heart = state.like.find((item) => {
+      //   return item.id === action.payload.id;
+      // });
+      // state.like = state.like.filter((item) => {
+      //   return item.id !== action.payload;
+      // });
+
+      // if (!heart) {
+      //   state.like.push(action.payload);
+      // } else {
+
+      //   for (let i = 0; i < state.like.length; i++) {
+      //     if (state.like[i].id === !action.payload.id) {
+      //       state.like[i].count--;
+      //     }
+      //   }
+      // }
     },
 
     plusCount: (state, action) => {
@@ -107,12 +124,8 @@ export const CartSlice = createSlice({
     likeIconToggle: (state, action) => {
       state.arr.forEach((item) => {
         if (item.id === action.payload) {
-          item.likeactiveicon = item.likeactiveicon = true;
-          console.log(item.likeactiveicon, "true value");
-        }
-       else if (item.id === action.payload) {
-          item.likeactiveicon = item.likeactiveicon = false;
-          console.log(item.likeactiveicon, "false value");
+          item.likeactiveicon = !item.likeactiveicon;
+          console.log(item.likeactiveicon, "value true");
         }
       });
     },
